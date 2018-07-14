@@ -1,0 +1,48 @@
+link(rel='stylesheet',href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css')
+  
+<div class="rows">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>S no.</th>
+        <th>Employee Name</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      for user in users
+        <tr>
+        <td>#{user.f_name}</td>
+        <td>#{user.l_name}</td>
+        <td>#{user.email}</td>
+        </tr>
+      endfor
+      
+    
+  </table>
+</div>
+
+p #{currentpage}
+p #{pageCount}
+
+if paginate.hasPreviousPages || paginate.hasNextPages(pageCount)
+<nav aria-label="...">
+  <ul class="pagination">
+    if paginate.hasPreviousPages
+    <li class="page-item">
+      <a class="page-link" href="#{paginate.href(true)}" tabindex="-1">Previous</a>
+    </li>
+    endif
+    if pages
+    -var h=hello
+    each page in pages
+     <li class="page-item"><a class="page-link" href="#{page.url}">#{page.number}</a></li>
+    endeach
+    endif
+    if paginate.hasNextPages(pageCount)
+    <li class="page-item">
+      <a class="page-link" href="#{paginate.href()}">Next</a>
+    </li>
+    endif
+  </ul>
+</nav>

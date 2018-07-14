@@ -1,0 +1,34 @@
+extends layout
+
+block content
+ 
+ if(errorstatus)
+   div.alert.alert-danger <strong>Error In form submission!</strong>
+    ul
+        each val in errormessage
+            li= val.msg
+ endif
+
+        <form class="col-6" name="register" id="register" action="savesignup" method="post">
+ 
+        <div class="form-group">
+            <label for="Firstname">First Name</label>
+            <input type="text" class="form-control" id="f_name" name="f_name" aria-describedby="f_name" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+            <label for="Firstname">Last Name</label>
+            <input type="text" class="form-control" id="l_name" name="l_name" aria-describedby="l_name" placeholder="Enter Last name" value="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <a href="/"><button type="button" class="btn btn-danger">Sign In?</button>  </a>
+        </form>
+        
+

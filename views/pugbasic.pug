@@ -1,0 +1,123 @@
+
+- var user = { description: 'foo bar baz' }
+- var authorised = false
+#user
+  if user.description
+    h2.green Description
+    p.description= user.description
+  else if authorised
+    h2.blue Description
+    p.description.
+      User has no description,
+      why not add one...
+  else
+    h2.red Description
+    p.description User has no description
+
+- var friends = 110
+case friends
+  when 110
+    p you have no friends
+    - break
+  when 1
+    p you have a friend
+  default
+    p you have #{friends} friends
+
+- for (var x = 0; x < 3; x++)
+  li item
+- endfor
+p you have #{friends} friends
+
+-
+ var list = ["Uno", "Dos", "Tres",
+          "Cuatro", "Cinco", "Seis"]
+each item in list
+  li= item
+
+p
+  = 'This code is <escaped>!'
+
+p
+  != 'This code is <strong>not</strong> escaped!'
+
+  // just some paragraphs
+p foo
+p bar
+
+include myfirstpage.pug
+
+
+- var title = "On Dogs: Man's Best Friend";
+- var author = "enlore";
+- var theGreat = "<span>escape!</span>";
+
+h1= title
+p Written with love by #{author}
+p This will be safe: #{theGreat}
+
+- var msg = "not my inside voice";
+p This is #{msg.toUpperCase()}
+
+p No escaping for #{'}'}!
+
+- var riskyBusiness = "<em>Some of the girls are wearing my mother's clothing.</em>";
+.quote
+  p Joel: !{riskyBusiness}
+
+
+p <h1>  Iteration </h1>
+
+ul
+  each val in [1, 2, 3, 4, 5]
+    li= val
+
+ul
+  each val, index in ['zero', 'one', 'two']
+    li= index + ': ' + val
+
+- var values = [];
+ul
+  each val in values.length ? values : ['There are no values']
+    li= val
+
+- var values = [];
+ul
+  each val in values
+    li= val
+  else
+    li There are no values
+
+- var n = 0;
+ul
+  while n < 4
+    li= n++
+
+<h1> Mixins allow you to create reusable blocks of Pug. </h1>
+
+//- Declaration
+mixin list
+  ul
+    li foo
+    li bar
+    li baz
+//- Use
++list
++list
+
+mixin pet(name)
+  li.pet= name
+ul
+  +pet('cat')
+  +pet('dog')
+  +pet('pig')
+
+  a('href'='https://pugjs.org/language/mixins.html' target='_blank') Mixin Link
+
+  p
+  | The pipe always goes at the beginning of its own line,
+  | not counting indentation.
+  | div p This text belongs to the paragraph tag. br
+  | This text belongs to the div tag.
+ 
+
